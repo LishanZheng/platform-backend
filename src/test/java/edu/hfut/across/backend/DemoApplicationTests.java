@@ -1,4 +1,4 @@
-package edu.hfut.across.demo;
+package edu.hfut.across.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
