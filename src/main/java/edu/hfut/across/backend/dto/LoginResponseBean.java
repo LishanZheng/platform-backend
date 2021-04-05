@@ -1,4 +1,4 @@
-package edu.hfut.across.backend.bean;
+package edu.hfut.across.backend.to;
 
 import edu.hfut.across.backend.entity.User;
 import lombok.AllArgsConstructor;
