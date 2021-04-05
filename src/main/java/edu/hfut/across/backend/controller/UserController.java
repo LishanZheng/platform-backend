@@ -1,8 +1,8 @@
 package edu.hfut.across.backend.controller;
 
 import edu.hfut.across.backend.annotation.UserLoginToken;
-import edu.hfut.across.backend.bean.LoginRequestBean;
-import edu.hfut.across.backend.bean.LoginResponseBean;
+import edu.hfut.across.backend.dto.LoginRequestBean;
+import edu.hfut.across.backend.dto.LoginResponseBean;
 import edu.hfut.across.backend.entity.Response;
 import edu.hfut.across.backend.entity.User;
 import edu.hfut.across.backend.service.TokenService;

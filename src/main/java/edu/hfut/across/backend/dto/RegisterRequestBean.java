@@ -1,4 +1,4 @@
-package edu.hfut.across.backend.to;
+package edu.hfut.across.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
