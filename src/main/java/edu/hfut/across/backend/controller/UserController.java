@@ -11,10 +11,7 @@ import edu.hfut.across.backend.service.UserService;
 import edu.hfut.across.backend.util.PasswordUtil;
 import edu.hfut.across.backend.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
@@ -27,10 +24,14 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/login")
+    @ResponseBody
     public Response login(@RequestBody LoginRequestBean requestBean) {
-        User user = new User();
-        user.setAccount(requestBean.getAccount());
-        user.setPassword(requestBean.getPassword());
+        String account = requestBean.getAccount();
+        String password = requestBean.getPassword();
+        User user = userService.login(account, password);
+        if (user == null) {
+            return ResponseUtil.error("账号或密码错误");
+        }
         String token = tokenService.getToken(user);
         LoginResponseBean loginResponseBean = new LoginResponseBean();
         loginResponseBean.setUser(user);

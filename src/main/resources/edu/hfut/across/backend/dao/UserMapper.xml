@@ -8,4 +8,7 @@
          values
           (#{nickname}, #{account}, #{password}, #{email}, #{introduction}, #{creationTime}, #{gender});
     </insert>
+    <select id="getUserByAccount" resultType="edu.hfut.across.backend.entity.User">
+        select * from user where account = #{account};
+    </select>
 </mapper>

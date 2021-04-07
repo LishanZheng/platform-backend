@@ -1,6 +1,8 @@
 package edu.hfut.across.backend.service;
 
 import edu.hfut.across.backend.dao.UserMapper;
+import edu.hfut.across.backend.entity.User;
+import edu.hfut.across.backend.util.PasswordUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +29,17 @@ public class UserServiceImp implements UserService {
             return null;
         }
         return account;
+    }
+
+    @Override
+    public User login(String account, String password) {
+        User user = userMapper.getUserByAccount(account);
+        if (user == null) {
+            return null;
+        }
+        if (PasswordUtil.checkPassword(password, user.getPassword())) {
+           return user;
+        }
+        return null;
     }
 }
