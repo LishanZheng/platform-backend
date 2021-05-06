@@ -4,11 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.hfut.across.backend.dao.UserMapper">
     <insert id="register">
-        insert into user(nickname, account, password, email, introduction, creationTime, gender)
+        insert into user(nickname, account, password, email, avatar, introduction, creationTime, gender)
          values
-          (#{nickname}, #{account}, #{password}, #{email}, #{introduction}, #{creationTime}, #{gender});
+          (#{nickname}, #{account}, #{password}, #{email}, #{avatar}, #{introduction}, #{creationTime}, #{gender});
     </insert>
     <select id="getUserByAccount" resultType="edu.hfut.across.backend.entity.User">
         select * from user where account = #{account};
+    </select>
+    <select id="getUserByEmail" resultType="edu.hfut.across.backend.entity.User">
+        select * from user where email = #{email};
     </select>
 </mapper>

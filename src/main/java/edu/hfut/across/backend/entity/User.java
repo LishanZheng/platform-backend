@@ -16,8 +16,9 @@ public class User {
     private String account;
     private String password;
     private String email;
+    private String avatar;
     private String introduction;
-    private Timestamp time;
+    private Timestamp creationTime;
     private Integer gender;
     private Integer state;
 }

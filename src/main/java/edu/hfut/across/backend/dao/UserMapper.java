@@ -9,7 +9,8 @@ import java.sql.Timestamp;
 public interface UserMapper {
 
     void register(String nickname, String account, String password, String email,
-                  String introduction, Timestamp creationTime, Integer gender);
+                  String avatar, String introduction, Timestamp creationTime, Integer gender);
 
     User getUserByAccount(String account);
+    User getUserByEmail(String email);
 }

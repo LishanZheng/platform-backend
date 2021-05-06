@@ -33,6 +33,7 @@ public class UserController {
             return ResponseUtil.error("账号或密码错误");
         }
         String token = tokenService.getToken(user);
+        user.setPassword(null);
         LoginResponseBean loginResponseBean = new LoginResponseBean();
         loginResponseBean.setUser(user);
         loginResponseBean.setToken(token);
@@ -50,11 +51,11 @@ public class UserController {
         String email = registerRequestBean.getEmail();
         String plainPassword = registerRequestBean.getPassword();
         String password = PasswordUtil.encode(plainPassword);
-        String account = userService.register(email,password);
+        String account = userService.register(email, password);
         if (account != null) {
             return ResponseUtil.success("注册成功！", account);
         } else {
-            return ResponseUtil.error("注册失败");
+            return ResponseUtil.error("注册失败, 邮箱已经被注册");
         }
     }
 }
