@@ -12,8 +12,13 @@ import java.sql.Timestamp;
 @Service
 public class UserServiceImp implements UserService {
 
-    @Autowired
+    final
     UserMapper userMapper;
+
+    @Autowired
+    public UserServiceImp(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     @Override
     public String register(String email, String password) {

@@ -2,10 +2,12 @@ package edu.hfut.across.backend.dao;
 
 import edu.hfut.across.backend.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 
 @Mapper
+@Component
 public interface UserMapper {
 
     void register(String nickname, String account, String password, String email,

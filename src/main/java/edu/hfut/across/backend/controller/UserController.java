@@ -1,9 +1,10 @@
 package edu.hfut.across.backend.controller;
 
 import edu.hfut.across.backend.annotation.UserLoginToken;
-import edu.hfut.across.backend.dto.LoginRequestBean;
-import edu.hfut.across.backend.dto.LoginResponseBean;
-import edu.hfut.across.backend.dto.RegisterRequestBean;
+import edu.hfut.across.backend.dao.PageMapper;
+import edu.hfut.across.backend.dto.user.LoginRequestBean;
+import edu.hfut.across.backend.dto.user.LoginResponseBean;
+import edu.hfut.across.backend.dto.user.RegisterRequestBean;
 import edu.hfut.across.backend.entity.Response;
 import edu.hfut.across.backend.entity.User;
 import edu.hfut.across.backend.service.TokenService;
@@ -17,11 +18,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
+    final
     TokenService tokenService;
 
-    @Autowired
+    final
     UserService userService;
+
+    @Autowired
+    public UserController(TokenService tokenService, UserService userService) {
+        this.tokenService = tokenService;
+        this.userService = userService;
+    }
 
     @PostMapping("/login")
     @ResponseBody
