@@ -6,4 +6,7 @@
     <select id="getSortPage" resultType="edu.hfut.across.backend.entity.Type">
         select * from type;
     </select>
+    <select id="getRoomList" resultType="edu.hfut.across.backend.entity.Room">
+        select * from room;
+    </select>
 </mapper>

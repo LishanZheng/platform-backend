@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Room {
+public class RoomResponse {
 
     private Integer id;
-    private Integer anchorId;
+    private Anchor anchor;
     private String roomNumber;
     private String title;
     private String announcement;
