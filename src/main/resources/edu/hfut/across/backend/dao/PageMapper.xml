@@ -9,4 +9,10 @@
     <select id="getRoomList" resultType="edu.hfut.across.backend.entity.Room">
         select * from room;
     </select>
+    <select id="getRoomListByType" resultType="edu.hfut.across.backend.entity.Room">
+        select * from room where type = #{type};
+    </select>
+    <select id="getSubRoomList" resultType="edu.hfut.across.backend.entity.Room">
+        select * from room where id in ( select roomId from user_room where userId = #{userId} );
+    </select>
 </mapper>

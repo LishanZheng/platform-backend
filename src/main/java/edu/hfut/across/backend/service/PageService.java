@@ -10,5 +10,10 @@ import java.util.List;
 public interface PageService {
 
     List<RoomResponse> getRoomList();
+
+    List<RoomResponse> getRoomList(String type);
+
     List<Type> getSortPage();
+
+    List<RoomResponse> getSubRoomList(Integer userId);
 }

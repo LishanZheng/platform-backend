@@ -1,7 +1,8 @@
 package edu.hfut.across.backend.controller;
 
+import edu.hfut.across.backend.dto.pages.RoomPageTypeReqBean;
+import edu.hfut.across.backend.dto.pages.SubRoomReqBean;
 import edu.hfut.across.backend.entity.Response;
-import edu.hfut.across.backend.entity.Room;
 import edu.hfut.across.backend.entity.RoomResponse;
 import edu.hfut.across.backend.entity.Type;
 import edu.hfut.across.backend.service.PageService;
@@ -29,6 +30,24 @@ public class PageController {
 
         List<RoomResponse> roomList = pageService.getRoomList();
         return ResponseUtil.success("直播列表获取成功", roomList);
+    }
+
+    @PostMapping("/room/type")
+    @ResponseBody
+    public Response getRoomListPageByType(@RequestBody RoomPageTypeReqBean roomPageTypeReqBean) {
+
+        String type = roomPageTypeReqBean.getType();
+        List<RoomResponse> roomList = pageService.getRoomList(type);
+        return ResponseUtil.success("按类型获取直播列表获取成功", roomList);
+    }
+
+    @PostMapping("/room/sub")
+    @ResponseBody
+    public Response getSubRoomList(@RequestBody SubRoomReqBean subRoomReqBean) {
+
+        Integer userId = subRoomReqBean.getUserId();
+        List<RoomResponse> roomList = pageService.getSubRoomList(userId);
+        return ResponseUtil.success("获取订阅直播列表获取成功", roomList);
     }
 
     @PostMapping("/sort")

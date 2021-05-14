@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -33,6 +32,27 @@ public class PageServiceImp implements PageService {
     public List<RoomResponse> getRoomList() {
 
         List<Room> roomList = pageMapper.getRoomList();
+        return getRoomResponses(roomList);
+    }
+
+    @Override
+    public List<RoomResponse> getRoomList(String type) {
+        List<Room> roomList = pageMapper.getRoomListByType(type);
+        return getRoomResponses(roomList);
+    }
+
+    @Override
+    public List<Type> getSortPage() {
+        return pageMapper.getSortPage();
+    }
+
+    @Override
+    public List<RoomResponse> getSubRoomList(Integer userId) {
+        List<Room> roomList = pageMapper.getSubRoomList(userId);
+        return getRoomResponses(roomList);
+    }
+
+    public List<RoomResponse> getRoomResponses(List<Room> roomList) {
         List<RoomResponse> responseList = new ArrayList<RoomResponse>();
         for (Room room : roomList) {
             RoomResponse roomResponse = new RoomResponse();
@@ -44,10 +64,5 @@ public class PageServiceImp implements PageService {
             responseList.add(roomResponse);
         }
         return responseList;
-    }
-
-    @Override
-    public List<Type> getSortPage() {
-        return pageMapper.getSortPage();
     }
 }

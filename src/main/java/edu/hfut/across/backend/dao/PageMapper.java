@@ -14,4 +14,8 @@ public interface PageMapper {
     List<Type> getSortPage();
 
     List<Room> getRoomList();
+
+    List<Room> getRoomListByType(String type);
+
+    List<Room> getSubRoomList(Integer userId);
 }
