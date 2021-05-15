@@ -1,11 +1,11 @@
 package edu.hfut.across.backend.service;
 
 import edu.hfut.across.backend.dao.AnchorMapper;
-import edu.hfut.across.backend.dao.PageMapper;
 import edu.hfut.across.backend.dao.RoomMapper;
 import edu.hfut.across.backend.entity.Anchor;
 import edu.hfut.across.backend.entity.Room;
 import edu.hfut.across.backend.entity.RoomResponse;
+import edu.hfut.across.backend.entity.User_Room;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +34,20 @@ public class RoomServiceImp implements RoomService {
         BeanUtils.copyProperties(room, roomResponse);
         roomResponse.setAnchor(anchor);
         return roomResponse;
+    }
+
+    @Override
+    public void subscribe(Integer roomId, Integer userId, Boolean signal) {
+        if (signal) {
+            roomMapper.subscribe(roomId, userId);
+        } else {
+            roomMapper.cancelSub(roomId, userId);
+        }
+    }
+
+    @Override
+    public Boolean getSubInform(Integer roomId, Integer userId) {
+        User_Room user_room = roomMapper.getSubInform(roomId, userId);
+        return user_room != null;
     }
 }

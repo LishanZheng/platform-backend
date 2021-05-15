@@ -2,6 +2,7 @@ package edu.hfut.across.backend.controller;
 
 
 import edu.hfut.across.backend.dto.room.RoomByNumberReqBean;
+import edu.hfut.across.backend.dto.room.SubscribeReqBean;
 import edu.hfut.across.backend.entity.Response;
 import edu.hfut.across.backend.entity.RoomResponse;
 import edu.hfut.across.backend.service.PageService;
@@ -30,6 +31,22 @@ public class RoomController {
 
         String roomNumber = roomByNumberReqBean.getRoomNumber();
         RoomResponse roomResponse = roomService.getRoomDetail(roomNumber);
-        return ResponseUtil.success("直播间信息获取成功", roomResponse);
+        return ResponseUtil.success("指定房间号直播间信息获取成功", roomResponse);
+    }
+
+    @PostMapping("/subs")
+    @ResponseBody
+    public Response subscribeRoom(@RequestBody SubscribeReqBean subscribeReqBean) {
+
+        Boolean signal = subscribeReqBean.getSignal();
+        Integer roomId = subscribeReqBean.getRoomId();
+        Integer userId = subscribeReqBean.getUserId();
+        if (signal == null) {
+            Boolean result = roomService.getSubInform(roomId, userId);
+            return ResponseUtil.success("订阅信息获取成功", result);
+        } else {
+            roomService.subscribe(roomId, userId, signal);
+            return ResponseUtil.success("订阅信息修改成功");
+        }
     }
 }

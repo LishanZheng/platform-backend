@@ -6,4 +6,15 @@
     <select id="getRoomDetail" resultType="edu.hfut.across.backend.entity.Room">
         select * from room where roomNumber = #{roomNumber};
     </select>
+    <insert id="subscribe">
+        insert into user_room(userId, roomId)
+         values
+         ( #{userId}, #{roomId} );
+    </insert>
+    <delete id="cancelSub">
+        delete from user_room where (userId = #{userId} and roomId = #{roomId} )
+    </delete>
+    <select id="getSubInform" resultType="edu.hfut.across.backend.entity.User_Room">
+        select * from user_room where (userId = #{userId} and roomId = #{roomId} )
+    </select>
 </mapper>
