@@ -14,4 +14,7 @@
     <select id="getUserByEmail" resultType="edu.hfut.across.backend.entity.User">
         select * from user where email = #{email};
     </select>
+    <select id="getUserById" resultType="edu.hfut.across.backend.entity.User">
+        select * from user where id = #{id};
+    </select>
 </mapper>

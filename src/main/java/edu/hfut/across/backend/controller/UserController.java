@@ -7,6 +7,7 @@ import edu.hfut.across.backend.dto.user.LoginResponseBean;
 import edu.hfut.across.backend.dto.user.RegisterRequestBean;
 import edu.hfut.across.backend.entity.Response;
 import edu.hfut.across.backend.entity.User;
+import edu.hfut.across.backend.entity.UserResponse;
 import edu.hfut.across.backend.service.TokenService;
 import edu.hfut.across.backend.service.UserService;
 import edu.hfut.across.backend.util.PasswordUtil;
@@ -42,7 +43,8 @@ public class UserController {
         String token = tokenService.getToken(user);
         user.setPassword(null);
         LoginResponseBean loginResponseBean = new LoginResponseBean();
-        loginResponseBean.setUser(user);
+        UserResponse userResponse = userService.getUserResponses(user);
+        loginResponseBean.setUser(userResponse);
         loginResponseBean.setToken(token);
         return ResponseUtil.success("登录成功", loginResponseBean);
     }

@@ -1,9 +1,11 @@
 package edu.hfut.across.backend.service;
 
+import edu.hfut.across.backend.dao.AnchorMapper;
 import edu.hfut.across.backend.dao.UserMapper;
-import edu.hfut.across.backend.entity.User;
+import edu.hfut.across.backend.entity.*;
 import edu.hfut.across.backend.util.PasswordUtil;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +17,13 @@ public class UserServiceImp implements UserService {
     final
     UserMapper userMapper;
 
+    final
+    AnchorMapper anchorMapper;
+
     @Autowired
-    public UserServiceImp(UserMapper userMapper) {
+    public UserServiceImp(UserMapper userMapper, AnchorMapper anchorMapper) {
         this.userMapper = userMapper;
+        this.anchorMapper = anchorMapper;
     }
 
     @Override
@@ -55,5 +61,15 @@ public class UserServiceImp implements UserService {
            return user;
         }
         return null;
+    }
+
+    public UserResponse getUserResponses(User user) {
+        UserResponse userResponse = new UserResponse();
+        // 复制 User 和 UserResponse 重复的部分
+        BeanUtils.copyProperties(user, userResponse);
+        Integer anchorId = user.getAnchorId();
+        Anchor anchor = anchorMapper.getAnchorById(anchorId);
+        userResponse.setAnchor(anchor);
+        return userResponse;
     }
 }

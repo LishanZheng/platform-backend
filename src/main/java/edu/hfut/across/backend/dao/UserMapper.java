@@ -14,5 +14,8 @@ public interface UserMapper {
                   String avatar, String introduction, Timestamp creationTime, Integer gender);
 
     User getUserByAccount(String account);
+
     User getUserByEmail(String email);
+
+    User getUserById(Integer id);
 }
