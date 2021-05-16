@@ -1,6 +1,7 @@
 package edu.hfut.across.backend.controller;
 
 
+import edu.hfut.across.backend.dto.room.EditRoomInformReqBean;
 import edu.hfut.across.backend.dto.room.RoomByNumberReqBean;
 import edu.hfut.across.backend.dto.room.SubscribeReqBean;
 import edu.hfut.across.backend.entity.Response;
@@ -45,5 +46,20 @@ public class RoomController {
             roomService.subscribe(roomId, userId, signal);
             return ResponseUtil.success("订阅信息修改成功");
         }
+    }
+
+    @PostMapping("/edit")
+    @ResponseBody
+    public Response editRoomInform(@RequestBody EditRoomInformReqBean editRoomInformReqBean) {
+
+        Integer id = editRoomInformReqBean.getId();
+        String title = editRoomInformReqBean.getTitle();
+        String announcement = editRoomInformReqBean.getAnnouncement();
+        String type = editRoomInformReqBean.getType();
+        String cover = editRoomInformReqBean.getCover();
+        Integer quantity = editRoomInformReqBean.getQuantity();
+        Integer stars = editRoomInformReqBean.getStars();
+        roomService.editRoomInform(id, title, announcement, type, cover, quantity, stars);
+        return ResponseUtil.success("房间信息修改成功");
     }
 }

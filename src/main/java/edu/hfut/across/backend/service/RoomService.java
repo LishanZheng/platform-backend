@@ -10,4 +10,6 @@ public interface RoomService {
     void subscribe(Integer roomId, Integer userId, Boolean signal);
 
     Boolean getSubInform(Integer roomId, Integer userId);
+
+    void editRoomInform(Integer id, String title, String announcement, String type, String cover, Integer quantity, Integer stars);
 }

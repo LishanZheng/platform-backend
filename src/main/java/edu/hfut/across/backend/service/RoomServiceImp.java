@@ -50,4 +50,9 @@ public class RoomServiceImp implements RoomService {
         User_Room user_room = roomMapper.getSubInform(roomId, userId);
         return user_room != null;
     }
+
+    @Override
+    public void editRoomInform(Integer id, String title, String announcement, String type, String cover, Integer quantity, Integer stars) {
+        roomMapper.editRoomInform(id, title, announcement, type, cover, quantity, stars);
+    }
 }

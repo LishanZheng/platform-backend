@@ -17,4 +17,14 @@
     <select id="getSubInform" resultType="edu.hfut.across.backend.entity.User_Room">
         select * from user_room where (userId = #{userId} and roomId = #{roomId} )
     </select>
+    <update id="editRoomInform">
+        update room set
+            title = #{title},
+            announcement = #{announcement},
+            `type` = #{type},
+            cover = #{cover},
+            quantity = #{quantity},
+            stars = #{stars}
+        where id = #{id}
+    </update>
 </mapper>
