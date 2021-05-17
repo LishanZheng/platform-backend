@@ -27,4 +27,9 @@
             stars = #{stars}
         where id = #{id}
     </update>
+    <insert id="register">
+        insert into room(anchorId, roomNumber, title, announcement, cover, `type`)
+         values
+          (#{anchorId}, #{roomNumber}, #{title}, #{announcement}, #{cover}, #{type} )
+    </insert>
 </mapper>

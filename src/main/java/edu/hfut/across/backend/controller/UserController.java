@@ -1,7 +1,7 @@
 package edu.hfut.across.backend.controller;
 
 import edu.hfut.across.backend.annotation.UserLoginToken;
-import edu.hfut.across.backend.dao.PageMapper;
+import edu.hfut.across.backend.dto.user.GetUserInformReqBean;
 import edu.hfut.across.backend.dto.user.LoginRequestBean;
 import edu.hfut.across.backend.dto.user.LoginResponseBean;
 import edu.hfut.across.backend.dto.user.RegisterRequestBean;
@@ -51,8 +51,9 @@ public class UserController {
 
     @UserLoginToken
     @PostMapping("/getMessage")
-    public Response getMessage() {
-        return ResponseUtil.success("获取成功");
+    public Response getMessage(@RequestBody GetUserInformReqBean getUserInformReqBean) {
+        UserResponse userResponse = userService.getUserById(getUserInformReqBean.getId());
+        return ResponseUtil.success("获取成功", userResponse);
     }
 
     @PostMapping("/register")

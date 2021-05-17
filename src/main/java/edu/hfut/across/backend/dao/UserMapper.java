@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Mapper
 @Component
@@ -18,4 +19,8 @@ public interface UserMapper {
     User getUserByEmail(String email);
 
     User getUserById(Integer id);
+
+    List<User> getSubscribeUser(Integer roomId);
+
+    void editAnchorId(Integer anchorId, Integer id);
 }

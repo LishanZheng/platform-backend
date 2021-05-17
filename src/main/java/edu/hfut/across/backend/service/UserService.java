@@ -12,4 +12,6 @@ public interface UserService {
     User login(String account, String password);
 
     UserResponse getUserResponses(User user);
+
+    UserResponse getUserById(Integer id);
 }

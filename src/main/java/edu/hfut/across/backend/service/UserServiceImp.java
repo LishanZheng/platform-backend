@@ -72,4 +72,9 @@ public class UserServiceImp implements UserService {
         userResponse.setAnchor(anchor);
         return userResponse;
     }
+
+    @Override
+    public UserResponse getUserById(Integer id) {
+        return getUserResponses(userMapper.getUserById(id));
+    }
 }

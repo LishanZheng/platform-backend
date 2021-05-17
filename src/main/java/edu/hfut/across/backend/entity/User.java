@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class User {
 
-    private Integer Id;
+    private Integer id;
     private Integer anchorId;
     private String nickname;
     private String account;

@@ -12,4 +12,8 @@ public interface RoomService {
     Boolean getSubInform(Integer roomId, Integer userId);
 
     void editRoomInform(Integer id, String title, String announcement, String type, String cover, Integer quantity, Integer stars);
+
+    Boolean checkRoomNumber(String roomNumber);
+
+    void register(String roomNumber, String title, String announcement, String type, String cover, Integer anchorId);
 }

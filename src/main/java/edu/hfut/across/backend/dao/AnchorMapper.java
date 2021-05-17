@@ -9,4 +9,9 @@ import org.springframework.stereotype.Component;
 public interface AnchorMapper {
 
     Anchor getAnchorById(Integer anchorId);
+
+    Anchor getAnchorByRoomNumber(String roomNumber);
+
+    Integer register(String name, String avatar, String roomNumber);
+
 }

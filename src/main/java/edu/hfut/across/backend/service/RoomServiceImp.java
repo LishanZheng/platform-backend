@@ -55,4 +55,14 @@ public class RoomServiceImp implements RoomService {
     public void editRoomInform(Integer id, String title, String announcement, String type, String cover, Integer quantity, Integer stars) {
         roomMapper.editRoomInform(id, title, announcement, type, cover, quantity, stars);
     }
+
+    @Override
+    public Boolean checkRoomNumber(String roomNumber) {
+        return roomMapper.getRoomDetail(roomNumber) == null;
+    }
+
+    @Override
+    public void register(String roomNumber, String title, String announcement, String type, String cover, Integer anchorId) {
+        roomMapper.register(roomNumber, title, announcement, type, cover, anchorId);
+    }
 }

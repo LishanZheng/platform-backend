@@ -20,4 +20,7 @@ public interface RoomMapper {
     User_Room getSubInform(Integer roomId, Integer userId);
 
     void editRoomInform(Integer id, String title, String announcement, String type, String cover, Integer quantity, Integer stars);
+
+    void register(String roomNumber, String title, String announcement, String type, String cover, Integer anchorId);
+
 }

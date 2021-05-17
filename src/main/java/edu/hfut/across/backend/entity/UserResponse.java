@@ -11,11 +11,10 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class UserResponse {
 
-    private Integer Id;
-    private Anchor anchor;
+    private Integer id;
+    private Anchor Anchor;
     private String nickname;
     private String account;
-    private String password;
     private String email;
     private String avatar;
     private String introduction;

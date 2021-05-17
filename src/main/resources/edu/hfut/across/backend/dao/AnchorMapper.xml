@@ -6,4 +6,12 @@
     <select id="getAnchorById" resultType="edu.hfut.across.backend.entity.Anchor">
         select * from anchor where id = #{anchorId};
     </select>
+    <select id="getAnchorByRoomNumber" resultType="edu.hfut.across.backend.entity.Anchor">
+        select * from anchor where roomNumber = #{roomNumber};
+    </select>
+    <insert id="register">
+        insert into anchor(`name`, avatar, roomNumber)
+         values
+          (#{name}, #{avatar}, #{roomNumber})
+    </insert>
 </mapper>

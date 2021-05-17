@@ -17,4 +17,12 @@
     <select id="getUserById" resultType="edu.hfut.across.backend.entity.User">
         select * from user where id = #{id};
     </select>
+    <select id="getSubscribeUser" resultType="edu.hfut.across.backend.entity.User">
+        select * from user where id in ( select userId from user_room where roomId = #{roomID}) ;
+    </select>
+    <update id="editAnchorId">
+        update `user` set
+            anchorId = #{anchorId}
+        where id = #{id}
+    </update>
 </mapper>
